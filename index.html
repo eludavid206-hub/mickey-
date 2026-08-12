@@ -33,7 +33,6 @@
             padding-bottom: 40px;
         }
 
-        /* Navigation Bar */
         .navbar {
             background-color: var(--card-bg);
             padding: 15px 20px;
@@ -64,7 +63,6 @@
             border: 1px solid var(--primary);
         }
 
-        /* Hero Banner */
         .hero {
             padding: 30px 20px;
             text-align: center;
@@ -84,7 +82,6 @@
             margin: 0 auto 20px;
         }
 
-        /* Container & Cards */
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -109,7 +106,6 @@
             color: var(--primary);
         }
 
-        /* Tabs for Switching Services */
         .tab-group {
             display: flex;
             gap: 10px;
@@ -134,7 +130,6 @@
             border-color: var(--primary);
         }
 
-        /* Form Controls */
         .form-group {
             margin-bottom: 15px;
         }
@@ -146,7 +141,7 @@
             margin-bottom: 6px;
         }
 
-        input, select {
+        input, select, textarea {
             width: 100%;
             padding: 12px;
             background-color: var(--dark-bg);
@@ -157,11 +152,10 @@
             outline: none;
         }
 
-        input:focus, select:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: var(--primary);
         }
 
-        /* Price Display Box */
         .price-box {
             background-color: rgba(255, 140, 0, 0.1);
             border: 1px dashed var(--primary);
@@ -177,7 +171,6 @@
             color: var(--primary);
         }
 
-        /* Buttons */
         .btn-submit {
             width: 100%;
             padding: 15px;
@@ -199,7 +192,6 @@
             transform: scale(0.98);
         }
 
-        /* Reviews / Social Proof */
         .review-item {
             border-bottom: 1px solid var(--border-color);
             padding: 12px 0;
@@ -225,7 +217,6 @@
 </head>
 <body>
 
-    <!-- Top Navigation -->
     <div class="navbar">
         <div class="logo">
             <i class="fa-solid fa-scissors"></i> MICKEY'S
@@ -233,20 +224,17 @@
         <span class="badge"><i class="fa-solid fa-circle-check"></i> Verified</span>
     </div>
 
-    <!-- Hero Section -->
     <div class="hero">
         <h1>Look Sharp. Paint Clean.</h1>
         <p>Premium Haircuts, Styling & Professional House Painting Services.</p>
     </div>
 
     <div class="container">
-        <!-- Interactive Booking & Price Calculator Card -->
         <div class="card">
             <div class="card-title">
                 <i class="fa-solid fa-calculator"></i> Book & Estimate Cost
             </div>
 
-            <!-- Category Switcher -->
             <div class="tab-group">
                 <button class="tab-btn active" id="tabBarbing" onclick="switchService('barbing')">
                     <i class="fa-solid fa-scissors"></i> Barbing
@@ -256,7 +244,6 @@
                 </button>
             </div>
 
-            <!-- Booking Form -->
             <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
                 <div class="form-group">
                     <label for="fullName">Your Full Name</label>
@@ -268,37 +255,38 @@
                     <input type="tel" id="phoneNumber" placeholder="08012345678" required>
                 </div>
 
-                <!-- Dynamic Service Selection -->
+                <!-- NEW LOCATION FIELD ADDED HERE -->
+                <div class="form-group">
+                    <label for="location">📍 Your Location / Address</label>
+                    <textarea id="location" placeholder="e.g. 45 Market Road, Onitsha" rows="2" required></textarea>
+                </div>
+
                 <div class="form-group" id="serviceOptions">
                     <label for="barbingStyle">Select Barbing Service</label>
                     <select id="barbingStyle" onchange="calculatePrice()">
                         <option value="3000">Adult Standard Haircut (₦3,000)</option>
                         <option value="3500">Haircut + Beard Trimming (₦3,500)</option>
-                        <option value="4000">Executive Cut + Dye/Enhancement (₦4,000)</option>
+                        <option value="4500">Executive Cut + Dye/Enhancement (₦4,500)</option>
                         <option value="1500">Kids Haircut (₦1,500)</option>
                     </select>
                 </div>
 
-                <!-- Estimated Price Box -->
                 <div class="price-box">
                     <span>Estimated Cost:</span>
                     <div class="price-amount" id="priceDisplay">₦1,500</div>
                 </div>
 
-                <!-- Date & Time -->
                 <div class="form-group">
                     <label for="bookingDate">Preferred Date & Time</label>
                     <input type="datetime-local" id="bookingDate" required>
                 </div>
 
-                <!-- Submit Button -->
                 <button type="submit" class="btn-submit">
                     <i class="fa-brands fa-whatsapp"></i> Book via WhatsApp
                 </button>
             </form>
         </div>
 
-        <!-- Customer Reviews Card -->
         <div class="card">
             <div class="card-title">
                 <i class="fa-solid fa-star"></i> Customer Reviews
@@ -313,7 +301,7 @@
             <div class="review-item">
                 <div class="stars">★★★★★</div>
                 <strong>Tobi A.</strong>
-                <p style="font-size: 0.85rem; color: var(--text-gray);">"Best barbing saloon in town. Fade cut smooth well well."</p>
+                <p style="font-size: 0.85rem; color: var(--text-gray);">"Best barbing saloon in town. Fade cut smooth well."</p>
             </div>
         </div>
 
@@ -322,10 +310,8 @@
         </footer>
     </div>
 
-    <!-- JavaScript Engine -->
     <script>
-        // Store phone number for booking (Replace with your actual WhatsApp phone number)
-        const MY_WHATSAPP_NUMBER = "2348106996593"; // Format: 234 + phone number without leading 0
+        const MY_WHATSAPP_NUMBER = "2348106996593"; // Your WhatsApp number
 
         let activeCategory = 'barbing';
 
@@ -343,7 +329,7 @@
                     <select id="barbingStyle" onchange="calculatePrice()">
                         <option value="3000">Adult Standard Haircut (₦3,000)</option>
                         <option value="3500">Haircut + Beard Trimming (₦3,500)</option>
-                        <option value="4000">Executive Cut + Dye/Enhancement (₦4,000)</option>
+                        <option value="4500">Executive Cut + Dye/Enhancement (₦4,500)</option>
                         <option value="1500">Kids Haircut (₦1,500)</option>
                     </select>
                 `;
@@ -367,7 +353,7 @@
             let price = 0;
             if(activeCategory === 'barbing') {
                 const select = document.getElementById('barbingStyle');
-                price = select ? select.value : 3000;
+                price = select ? select.value : 1500;
             } else {
                 const select = document.getElementById('paintingScope');
                 price = select ? select.value : 15000;
@@ -386,6 +372,7 @@
             
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phoneNumber').value;
+            const location = document.getElementById('location').value; // NEW
             const date = document.getElementById('bookingDate').value;
             const price = document.getElementById('priceDisplay').innerText;
             
@@ -398,17 +385,16 @@
                 selectedServiceText = select.options[select.selectedIndex].text;
             }
 
-            // Construct clean WhatsApp message
             const message = `Hello MICKEY'S SERVICES! 👋%0A%0A` +
                 `I would like to book a service:%0A` +
                 `👤 *Name:* ${encodeURIComponent(name)}%0A` +
                 `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                `📍 *Location:* ${encodeURIComponent(location)}%0A` +  // NEW
                 `🛠 *Service:* ${encodeURIComponent(selectedServiceText)}%0A` +
                 `💰 *Est. Price:* ${encodeURIComponent(price)}%0A` +
                 `📅 *Date & Time:* ${encodeURIComponent(date)}%0A%0A` +
                 `Please confirm my booking!`;
 
-            // Open WhatsApp
             window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`, '_blank');
         }
     </script>
